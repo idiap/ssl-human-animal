@@ -1,0 +1,30 @@
+# @package _global_
+
+defaults:
+  # - /dask: sgpu
+  - override /data: alex
+
+sample_rate: 16000
+tags: extract_${data.data.name}_${model}_${sample_rate}
+seed: 12345
+
+data: 
+  data:
+    selected_labels: calltype # irrelevant for extraction
+
+batch_size: 32
+min_len: 5000
+max_len: 2_000_000
+
+owner: facebook
+model: wav2vec2-base-100h
+
+paths:
+  feats_dir: ${paths.alex_dir}/${model}_${sample_rate}
+  pkl_dir: ${paths.root_dir}/pkl/${model}/${data.data.name}_${sample_rate}_train_means_std.npz
+
+return_attentions: False
+
+hydra:
+  launcher:
+    mem_gb: 8

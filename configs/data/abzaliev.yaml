@@ -1,0 +1,314 @@
+_target_: src.data.marmosetdatamodule.MarmosetDataModule
+batch_size: 16
+train_split: 0.7
+val_split: 0.2
+num_workers: 7
+
+data:
+  _target_: src.data.abzaliev.abzalievdataset.AbzalievDataset
+  name: abzaliev
+  data_dir: ${paths.abzaliev_dir}
+  target_sample_rate: ${sample_rate}
+  transformation: null
+
+  individual_to_index:
+    lazy: 0
+    luna: 1
+    koster: 2
+    megara: 3
+    chufina: 4
+    guera: 5
+    jerry: 6
+    bady: 7
+    maly: 8
+    kizzy: 9
+    perry: 10
+    capy: 11
+    kiara: 12
+    daysi: 13
+    homero: 14
+    klein: 15
+    sofia: 16
+    moringa: 17
+    benito: 18
+    mika: 19
+    bella: 20
+    phibi: 21
+    turugus: 22
+    neñe: 23
+    fisgon: 24
+    mama fisgon: 25
+    chiki: 26
+    tinki: 27
+    chica: 28
+    paloma: 29
+    kien: 30
+    guera2: 31
+    goofy: 32
+    princesa: 33
+    tainy: 34
+    kiko: 35
+    pantera: 36
+    estrella: 37
+    paloma2: 38
+    kika: 39
+    campana: 40
+    sanzón: 41
+    robina: 42
+    misha: 43
+    lily: 44
+    page: 45
+    becky: 46
+    jade: 47
+    chocolate: 48
+    coffe: 49
+    taizon: 50
+    greñas: 51
+    mora: 52
+    pelusa: 53
+    nana: 54
+    everest: 55
+    mickey: 56
+    beily: 57
+    niña: 58
+    cosi: 59
+    peludina: 60
+    peludin: 61
+    chabela: 62
+    centavo: 63
+    kyley: 64
+    cachito: 65
+    muñe: 66
+    gala: 67
+    zebri: 68
+    zara: 69
+    maiki: 70
+    niño: 71
+    rutila: 72
+    cloe: 73
+    pirruña: 74
+    lucas: 75
+    tito: 76
+    peque: 77
+    rayo: 78
+    chiquita: 79
+
+  breed_to_index:
+    chihuahua: 0
+    schnauzer: 1
+    french poodle: 2
+    yorkshire: 3
+    salchicha: 4
+    schnauzer/chihuahua: 5
+    french poodle/maltese: 6
+    french poodle/schnauzer: 7
+    french poodle/chihuahua: 8
+
+  individual_to_gender:
+    lazy: F
+    luna: F
+    koster: M
+    megara: F
+    chufina: F
+    guera: F
+    jerry: M
+    bady: M
+    maly: F
+    kizzy: M
+    perry: M
+    capy: M
+    kiara: F
+    daysi: F
+    homero: M
+    klein: M
+    sofia: F
+    moringa: F
+    benito: M
+    mika: F
+    bella: F
+    phibi: F
+    turugus: M
+    neñe: F
+    fisgon: M
+    mama fisgon: F
+    chiki: F
+    tinki: F
+    chica: F
+    paloma: F
+    kien: M
+    guera2: F
+    goofy: M
+    princesa: F
+    tainy: F
+    kiko: M
+    pantera: F
+    estrella: F
+    paloma2: F
+    kika: F
+    campana: F
+    sanzón: M
+    robina: F
+    misha: F
+    lily: F
+    page: F
+    becky: F
+    jade: F
+    chocolate: M
+    coffe: M
+    taizon: M
+    greñas: M
+    mora: F
+    pelusa: F
+    nana: F
+    everest: F
+    mickey: M
+    beily: F
+    niña: F
+    cosi: F
+    peludina: F
+    peludin: M
+    chabela: F
+    centavo: M
+    kyley: M
+    cachito: M
+    muñe: F
+    gala: F
+    zebri: M
+    zara: F
+    maiki: M
+    niño: M
+    rutila: F
+    cloe: F
+    pirruña: F
+    lucas: M
+    tito: M
+    peque: M
+    rayo: M
+    chiquita: F
+
+  gender_to_binary:
+    F: 0
+    M: 1
+
+  calltype_to_index:
+    L-S1: 0
+    L-S2: 1
+    L-S3: 2
+    L-A: 3
+    L-PA: 4
+    L-P: 5
+    L-O: 6
+    S: 7
+    CH-P: 8
+    CH-N: 9
+    GR-P: 10
+    GR-N: 11
+    L-TA: 12
+    L-H: 13
+
+
+  individual_to_breed:
+    lazy: chihuahua
+    luna: chihuahua
+    koster: schnauzer
+    megara: schnauzer
+    chufina: chihuahua
+    guera: chihuahua
+    jerry: chihuahua
+    bady: french poodle
+    maly: schnauzer
+    kizzy: chihuahua
+    perry: chihuahua
+    capy: chihuahua
+    kiara: yorkshire
+    daysi: french poodle
+    homero: chihuahua
+    klein: chihuahua
+    sofia: schnauzer
+    moringa: schnauzer/chihuahua
+    benito: chihuahua
+    mika: schnauzer
+    bella: french poodle
+    phibi: french poodle
+    turugus: chihuahua
+    neñe: french poodle
+    fisgon: chihuahua
+    mama fisgon: chihuahua
+    chiki: french poodle
+    tinki: french poodle
+    chica: chihuahua
+    paloma: chihuahua
+    kien: chihuahua
+    guera2: french poodle/chihuahua
+    goofy: chihuahua
+    princesa: chihuahua
+    tainy: french poodle
+    kiko: french poodle/schnauzer
+    pantera: salchicha
+    estrella: chihuahua
+    paloma2: chihuahua
+    kika: chihuahua
+    campana: chihuahua
+    sanzón: chihuahua
+    robina: chihuahua
+    misha: chihuahua
+    lily: chihuahua
+    page: schnauzer
+    becky: schnauzer
+    jade: schnauzer
+    chocolate: chihuahua
+    coffe: chihuahua
+    taizon: french poodle
+    greñas: chihuahua
+    mora: french poodle
+    pelusa: french poodle
+    nana: chihuahua
+    everest: chihuahua
+    mickey: french poodle/maltese
+    beily: french poodle/maltese
+    niña: french poodle/schnauzer
+    cosi: chihuahua
+    peludina: chihuahua
+    peludin: chihuahua
+    chabela: schnauzer
+    centavo: chihuahua
+    kyley: chihuahua
+    cachito: chihuahua
+    muñe: french poodle
+    gala: french poodle
+    zebri: chihuahua
+    zara: french poodle
+    maiki: chihuahua
+    niño: french poodle
+    rutila: chihuahua
+    cloe: chihuahua
+    pirruña: chihuahua
+    lucas: chihuahua
+    tito: chihuahua
+    peque: chihuahua
+    rayo: chihuahua
+    chiquita: chihuahua
+
+  typos_individual:
+    tinky150717: tinki
+    chica180717: chica
+    centavito: centavo
+    zanzon: sanzón
+    niño: niño
+    maiky: maiki
+    ñeñe: neñe
+    greñas: greñas
+    muñe: muñe
+    mamafisgon: mama fisgon
+    niña: niña
+    mama fisgonn: mama fisgon
+    zebry: zebri
+    lasy: lazy
+    alba: alba pitbull
+    perro: perro-3
+
+  lengths:
+      calltype: 14
+      gender: 2
+      breed: 9
+      individual: 80

@@ -1,0 +1,15 @@
+# @package _global_
+
+defaults:
+  # - /dask: sgpu
+  - override /data: watkins
+
+sample_rate: 16000
+tags: compile_${data.data.name}_${model}_${sample_rate}
+seed: 12345
+
+owner: microsoft
+model: wavlm-base
+
+paths:
+  feats_dir: ${paths.watkins_dir}/${model}_${sample_rate}

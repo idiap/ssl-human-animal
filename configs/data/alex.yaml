@@ -1,0 +1,113 @@
+_target_: src.data.marmosetdatamodule.MarmosetDataModule
+batch_size: 16
+train_split: 0.7
+val_split: 0.2
+num_workers: 7
+
+data:
+  _target_: src.data.alex.alexmarmosetsdataset.AlexMarmosetsDataset
+  name: alex
+  data_dir: ${paths.alex_dir}
+  target_sample_rate: ${sample_rate}
+  transformation: null
+
+  calltype_to_index:
+    alarm: 0
+    chatter: 1
+    ek: 2
+    food: 3
+    phee: 4
+    trill: 5
+    tsk: 6
+    twitter: 7
+
+  typos_calltype:
+    "food_elements": "food_element"
+    "food _element": "food_element"
+    "food_elemet": "food_element"
+    "fod_element": "food_element"
+    "nf_alam_type": "nf_alarm_type"
+    "food _type": "food_type"
+    "nf_trill_bout": "nf_trill_bout"
+    "nf_twiter_type": "nf_twitter_type"
+    "tril_type": "trill_type"
+    " phee_type": "phee_type"
+    "f_twitter_type": "nf_twitter_type"
+    "nf_trill _type": "nf_trill_type"
+    " food_type": "food_type"
+    "fd_type": "food_type"
+    "trill _element": "trill_element"
+    "nf _food_type": "nf_food_type"
+    "nf_twitter_bout": "nf_twitter_bout"
+    "trill _type": "trill_type"
+    "chatter_type": "chatter_type"
+    "twitter _type": "twitter_type"
+    "foodtype": "food_type"
+    "till_type": "trill_type"
+    "food__type": "food_type"
+    "food_tye": "food_type"
+    "nf_ts_type": "nf_tsk_type"
+
+  gender_to_binary:
+    F: 0
+    M: 1
+
+  individual_sname_to_name:
+    Jam: Jam
+    Nut: Nutella
+    Nau: Nautilus
+    Neb: Nebula
+    Gar: Garetta
+    Nun: Nuno
+    Jms: James
+    Man: Manuka
+
+  # individual_to_age:
+  #   Nutella: 4
+  #   Jam: 3
+  #   Nebula: 7
+  #   Nautilus: 7
+  #   Garetta: 10
+  #   Nuno: 6
+  #   Manuka: 4
+  #   James: 6
+
+  individual_to_gender:
+    Nutella: F
+    Jam: M
+    Nebula: F
+    Nautilus: M
+    Garetta: F
+    Nuno: M
+    Manuka: F
+    James: M
+
+  individual_to_index:
+    Nutella: 0
+    Jam: 1
+    Nebula: 2
+    Nautilus: 3
+    Garetta: 4
+    Nuno: 5
+    Manuka: 6
+    James: 7
+
+  sequence_to_index:
+    type: 0
+    element: 1
+
+  twin_to_twin:
+    Nutella: Jam
+    Jam: Nutella
+    Nebula: Nautilus
+    Nautilus: Nebula
+    Garetta: Nuno
+    Nuno: Garetta
+    Manuka: James
+    James: Manuka
+
+  selected_labels: ???
+  lengths:
+    calltype: 8
+    gender: 2
+    caller: 8

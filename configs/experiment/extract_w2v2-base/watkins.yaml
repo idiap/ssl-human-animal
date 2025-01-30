@@ -1,0 +1,30 @@
+# @package _global_
+
+defaults:
+  # - /dask: sgpu
+  - override /data: watkins
+
+sample_rate: 16000
+tags: extract_${data.data.name}_${model}_${sample_rate}
+seed: 12345
+
+data: 
+  data:
+    selected_labels: species # irrelevant for extraction
+
+batch_size: 1
+min_len: 5000
+max_len: 2_000_000
+
+owner: facebook
+model: wav2vec2-base
+
+paths:
+  feats_dir: ${paths.watkins_dir}/${model}_${sample_rate}
+  pkl_dir: ${paths.root_dir}/pkl/${model}/${data.data.name}_${sample_rate}_train_means_std.npz
+
+return_attentions: False
+
+hydra:
+  launcher:
+    mem_gb: 8

@@ -1,0 +1,11 @@
+# @package _global_
+
+defaults:
+  - override /hydra/launcher: dask
+
+hydra:
+  launcher:
+    queue: "sgpu"
+    walltime: "03:00:00"
+    log_directory: ${hydra.sweep.dir}/dask-logs
+    hostname: "'vgn[eifghj]*'"

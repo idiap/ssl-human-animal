@@ -1,0 +1,30 @@
+_target_: src.data.marmosetdatamodule.MarmosetDataModule
+batch_size: 16
+train_split: 0.7
+val_split: 0.2
+num_workers: 7
+
+data:
+  _target_: src.data.imv.imvdataset.IMVDataset
+  name: imv
+  data_dir: ${paths.imv_dir}
+  target_sample_rate: ${sample_rate}
+  transformation: null
+
+  calltype_to_index:
+    Peep(Pre-Phee): 0
+    Phee: 1
+    Twitter: 2
+    Trill: 3
+    Trillphee: 4
+    "Tsik Tse": 5
+    Egg: 6
+    Pheecry(cry): 7
+    TrllTwitter: 8
+    Pheetwitter: 9
+    Peep: 10
+
+  selected_labels: ???
+  lengths:
+    calltype: 11
+    caller: 10

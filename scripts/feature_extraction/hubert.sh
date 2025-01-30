@@ -1,0 +1,3 @@
+python src/extract_hubert.py -m experiment=extract_hubert-base/abzaliev.yaml,extract_hubert-base/watkins.yaml,extract_hubert-base/imv.yaml,extract_hubert-base/alex.yaml,extract_hubert-base/kaja.yaml +slurm=gpu_30G
+
+python src/compile_feats.py -m experiment=compile_features/hubert-base_abzaliev.yaml,compile_features/hubert-base_watkins.yaml,compile_features/hubert-base_alex.yaml,compile_features/hubert-base_imv.yaml,compile_features/hubert-base_kaja.yaml +slurm=gpu_30G

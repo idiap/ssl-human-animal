@@ -1,0 +1,16 @@
+# @package _global_
+
+defaults:
+  # - /dask: sgpu
+  - override /data: imv
+
+sample_rate: 16000
+tags: compile_${data.data.name}_${model}_${sample_rate}
+seed: 12345
+
+owner: facebook
+model: hubert-base-ls960
+
+paths:
+  feats_dir: ${paths.imv_dir}/${model}_${sample_rate}
+  

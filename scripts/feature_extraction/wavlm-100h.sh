@@ -1,0 +1,3 @@
+python src/extract_wavlm.py -m experiment=extract_wavlm-base-100h/abzaliev.yaml,extract_wavlm-base-100h/watkins.yaml,extract_wavlm-base-100h/imv.yaml,extract_wavlm-base-100h/alex.yaml,extract_wavlm-base-100h/kaja.yaml +slurm=gpu_30G
+
+python src/compile_feats.py -m experiment=compile_features/wavlm-base-100h_abzaliev.yaml,compile_features/wavlm-base-100h_watkins.yaml,compile_features/wavlm-base-100h_alex.yaml,compile_features/wavlm-base-100h_imv.yaml,compile_features/wavlm-base-100h_kaja.yaml +slurm=gpu_30G

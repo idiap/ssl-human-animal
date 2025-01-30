@@ -1,0 +1,41 @@
+# @package _global_
+
+defaults:
+  # - /dask: sgpu
+  - override /data: watkins
+  - override /model: dense_net
+
+sample_rate: 16000
+tags: ${data.data.name}_${data.data.selected_labels}_${mname}_densenet_sr${sample_rate}_l${layer_id}_bs${data.batch_size}_lr${model.optimizer.lr}
+layer_id: ???
+
+mname: wav2vec2-base-100h
+
+model:
+  exp_name: ${tags}
+  net:
+    num_input: 1536
+
+data:
+  data:
+    selected_labels: species
+    # nan_rows: ${paths.root_dir}/pkl/${mname}/${data.data.name}_nans.npy
+    transformation:
+      _target_: src.transforms.wav2vec2.Wav2Vec2
+      feats_dir: ${paths.watkins_dir}/${mname}_${sample_rate}/all_${mname}.npz
+      nan_rows: ${paths.root_dir}/pkl/${mname}/${data.data.name}_nans.npy
+      layer_id: ${layer_id}
+    standardization:
+      _target_: src.transforms.standardize.Standardize
+      pkl_dir: ${paths.root_dir}/pkl/${mname}/${data.data.name}_${sample_rate}_layer${layer_id}_train_means_std.npz
+
+logger:
+  wandb:
+    group: ${data.data.name}_${data.data.selected_labels}_${mname}_densenet_sr${sample_rate}
+    name: ${tags}
+  aim:
+    experiment: ${data.data.name}_${data.data.selected_labels}_${mname}
+
+hydra:
+  launcher:
+    mem_gb: 32

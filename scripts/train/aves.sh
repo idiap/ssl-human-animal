@@ -1,0 +1,3 @@
+python src/train.py -m experiment=train_aves/aves-bio_abzaliev.yaml,train_aves/aves-bio_watkins.yaml,train_aves/aves-bio_alex.yaml,train_aves/aves-bio_kaja.yaml,train_aves/aves-bio_imv.yaml ++layer_id=0,1,2,3,4,5,6,7,8,9,10,11,12 +slurm=gpu_30G
+
+# python src/train.py -m experiment=train_aves/aves-bio_abzaliev.yaml,train_aves/aves-bio_watkins.yaml,train_aves/aves-bio_alex.yaml,train_aves/aves-bio_kaja.yaml,train_aves/aves-bio_imv.yaml layer_id=12 +slurm=gpu_30G

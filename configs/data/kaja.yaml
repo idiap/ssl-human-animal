@@ -1,0 +1,91 @@
+_target_: src.data.marmosetdatamodule.MarmosetDataModule
+batch_size: 16
+train_split: 0.7
+val_split: 0.2
+num_workers: 7
+
+data:
+  _target_: src.data.kaja.kajamarmosetsdataset.KajaMarmosetsDataset
+  name: kaja
+  data_dir: ${paths.kaja_dir}
+  target_sample_rate: ${sample_rate}
+  transformation: null
+
+  calltype_to_index: 
+    phee: 0
+    trill: 1
+    fd: 2
+    tsd: 3
+    tsk: 4
+    twitter: 5
+    egg: 6
+    pheeseq: 7
+    tskseq: 8
+    eggseq: 9
+    tsdseq: 10
+    fdseq: 11
+
+  # other_class_to_index:
+  #   phee: 0
+  #   twitter: 1
+  #   trill: 2
+  #   trillphee: 3
+  #   tsik: 4
+  #   egg: 5
+  #   pheecry: 6
+  #   ct-trill: 7
+  #   ct-phee: 8
+  #   peep: 9
+
+  individual_to_index:
+    nougatti: 0
+    jam: 1
+    tabor: 3
+    wuschel: 4
+    lola: 5
+    lexus: 6
+    odin: 7
+    olympia: 8
+
+  individual_to_gender:
+    nougatti: M
+    jam: M
+    tabor: M
+    wuschel: M
+    lola: F
+    lexus: M
+    odin: M
+    olympia: F
+
+  gender_to_binary:
+    F: 0
+    M: 1
+
+  typos_calltype:
+    eggsq: eggseq
+    eggeq: eggseq
+    twiter: twitter
+    pheseq: pheeseq
+    wuschel-phee: phee
+    phase changes: phasechange
+    Phase change: phasechange
+    phase change: phasechange
+
+  typos_individualID: 
+    wuschel-phee: wuschel
+    nougati: nougatti
+    nugatti: nougatti
+    wsuchel: wuschel
+    phase changes: phasechange
+    phase change: phasechange
+    tabo: tabor
+    tabot: tabor
+    odni: odin
+    odini: odin
+    olypia: olympia
+
+  selected_labels: ???
+  lengths:
+    calltype: 12
+    gender: 2
+    caller: 9

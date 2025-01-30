@@ -1,0 +1,34 @@
+# @package _global_
+
+defaults:
+  # - /dask: sgpu
+  - override /data: imv
+
+sample_rate: 16_000
+tags: extract_${data.data.name}_${model}_${sample_rate}
+seed: 12345
+
+data: 
+  data:
+    selected_labels: calltype # irrelevant for extraction
+
+batch_size: 32
+min_len: 5_000
+max_len: 2_000_000
+
+owner: esp
+model: aves_bio
+
+upstream_model:
+  _target_: src.models.components.aves_net.AvesClassifier
+  model_path: ${paths.aves_dir}/aves-base-bio.pt
+
+paths:
+  feats_dir: ${paths.imv_dir}/aves_bio_${sample_rate}
+  pkl_dir: ${paths.root_dir}/pkl/aves_bio/${data.data.name}_${sample_rate}_train_means_std.npz
+
+return_attentions: False
+
+# hydra:
+#   launcher:
+#     mem_gb: 30

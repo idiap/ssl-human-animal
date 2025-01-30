@@ -1,0 +1,52 @@
+_target_: src.data.watkins.watkinsdatamodule.WatkinsDataModule
+batch_size: 16
+train_split: 0.7
+val_split: 0.2
+num_workers: 7
+
+data:
+  _target_: src.data.watkins.watkinsdataset.WatkinsDataset
+  name: watkins
+  data_dir: ${paths.watkins_dir}
+  target_sample_rate: ${sample_rate}
+  transformation: null
+
+  species_to_index:
+    'Clymene_Dolphin': 0
+    'Bottlenose_Dolphin': 1
+    'Spinner_Dolphin': 2
+    'Beluga,_White_Whale': 3
+    'Bearded_Seal': 4
+    'Minke_Whale': 5
+    'Humpback_Whale': 6
+    'Southern_Right_Whale': 7
+    'White-sided_Dolphin': 8
+    'Narwhal': 9
+    'White-beaked_Dolphin': 10
+    'Northern_Right_Whale': 11
+    'Frasers_Dolphin': 12
+    'Weddell_Seal': 13
+    'Grampus,_Rissos_Dolphin': 14
+    'Harp_Seal': 15
+    'Atlantic_Spotted_Dolphin': 16
+    'Fin,_Finback_Whale': 17
+    'Ross_Seal': 18
+    'Rough-Toothed_Dolphin': 19
+    'Killer_Whale': 20
+    'Pantropical_Spotted_Dolphin': 21
+    'Short-Finned_Pacific_Pilot_Whale': 22
+    'Bowhead_Whale': 23
+    'False_Killer_Whale': 24
+    'Melon_Headed_Whale': 25
+    'Long-Finned_Pilot_Whale': 26
+    'Striped_Dolphin': 27
+    'Leopard_Seal': 28
+    'Walrus': 29
+    'Sperm_Whale': 30
+    'Common_Dolphin': 31
+
+
+  lengths:
+    species: 32
+
+  selected_labels: species

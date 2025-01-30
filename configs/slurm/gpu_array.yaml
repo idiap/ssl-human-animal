@@ -1,0 +1,17 @@
+# @package _global_
+
+defaults:
+  - override /hydra/launcher: submitit_slurm
+
+hydra:
+  launcher:
+    partition: gpu
+    mem_gb: 8
+    gpus_per_task: 1
+    account: ${paths.account}
+    additional_parameters: 
+      job_name: extract_w2v2
+      wckey: submitit
+      array: "0-3"
+      output: ${hydra.sweep.dir}/.submitit/%A_%a/%A_%a_%t_log.out
+      error: ${hydra.sweep.dir}/.submitit/%A_%a/%A_%a_%t_log.err

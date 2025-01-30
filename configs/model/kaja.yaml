@@ -1,0 +1,45 @@
+_target_: src.models.template_lit.LitModule
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 0.001
+  weight_decay: 0.0
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: min
+  factor: 0.1
+  patience: 10
+
+net:
+  _target_: src.models.components.cnn_16khz_marmosets.CNN_16KHz_Marmosets
+  num_input: 1
+  win_size_s: 0.03
+  win_shift_s: 0.005
+  sample_rate: ${sample_rate}
+  num_channels: 128
+  flatten_size: 4
+  selected_labels: ${data.data.selected_labels}
+  lengths: ${data.data.lengths}
+
+# net:
+#   _target_: src.models.components.simple_dense_net.SimpleDenseNet
+#   input_size: 784
+#   lin1_size: 64
+#   lin2_size: 128
+#   lin3_size: 64
+#   output_size: 10
+
+# training:
+#   learning_rate: 0.01
+#   num_epochs: 100
+#   batch_size: 64
+#   window_size: 
+#   window_shift: 
+#   max_pooling_kernel_width:
+#   num_conv_filters:
+#   num_hidden_units:
+#   context:
+#   architecture: CNN

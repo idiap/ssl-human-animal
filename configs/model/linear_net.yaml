@@ -1,0 +1,20 @@
+_target_: src.models.template_lit.LitModule
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 0.001
+  weight_decay: 0.0
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: min
+  factor: 0.1
+  patience: 10
+
+net:
+  _target_: src.models.components.linear_net.LinearNet
+  selected_labels: ${data.data.selected_labels}
+  lengths: ${data.data.lengths}
+  num_input: 1536

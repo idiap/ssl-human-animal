@@ -1,0 +1,53 @@
+# reasons you might want to use `environment.yaml` instead of `requirements.txt`:
+# - pip installs packages in a loop, without ensuring dependencies across all packages
+#   are fulfilled simultaneously, but conda achieves proper dependency control across
+#   all packages
+# - conda allows for installing packages without requiring certain compilers or
+#   libraries to be available in the system, since it installs precompiled binaries
+
+name: animal_env
+
+channels:
+  - pytorch
+  - https://www.idiap.ch/software/bob/conda
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.9
+  - lightning=2.*
+  - torchmetrics=0.*
+  - hydra-core=1.*
+  - rich=13.*
+  - pre-commit=3.*
+  - pytest=7.*
+  - bob.extension=7.0
+  - scikit-learn
+  - wandb
+  - joblib
+  - dask-jobqueue
+  - gridtk
+  - numpy
+  - matplotlib
+  - seaborn
+  - pandas
+  - tqdm
+  - pyrootutils
+  - ipykernel
+  - ipywidgets
+  - docstring_parser
+  - pytest
+  - sphinx
+  - rich
+  - sh
+  - fastapi
+  - pydantic
+  - lxml
+  - accelerate
+  - pip>=23
+  - pip:
+      - hydra-optuna-sweeper
+      - hydra-colorlog
+      - ipdb
+      - transformers
+      - torchlibrosa

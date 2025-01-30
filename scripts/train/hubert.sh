@@ -1,0 +1,1 @@
+python src/train.py -m experiment=train_hubert/hubert-base_abzaliev.yaml,train_hubert/hubert-base_watkins.yaml,train_hubert/hubert-base_alex.yaml,train_hubert/hubert-base_kaja.yaml,train_hubert/hubert-base_imv.yaml layer_id=0,1,2,3,4,5,6,7,8,9,10,11,12 +slurm=gpu_60G
